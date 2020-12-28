@@ -24,15 +24,15 @@ _loop:
 	cmp byte	[rsi], 0
 	jne			_cpy
 	mov byte	[rdi + r8], 0
-	mov	qword	rax, rdi
+	mov qword	rax, rdi
 	pop			r8
 	pop			r9
 	pop			rbp
 	ret
 
 _cpy:
-	mov	byte	r9b, [rsi]
-	mov	byte	[rdi + r8], r9b
+	mov byte	r9b, [rsi]
+	mov byte	[rdi + r8], r9b
 	inc			rsi
 	inc			r8
 	jmp			_loop

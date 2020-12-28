@@ -4,7 +4,9 @@ OUTPUT = main.out
 
 OBJ =	srcs/ft_strlen.s \
 		srcs/ft_strcpy.s \
-		srcs/ft_strcmp.s
+		srcs/ft_strcmp.s \
+		srcs/ft_read.s \
+		srcs/ft_write.s
 OBJS = $(OBJ:.s=.o)
 
 INC = includes/
@@ -24,7 +26,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) ft_write.txt write.txt
 
 fclean: clean
 	$(RM) $(NAME) $(OUTPUT)

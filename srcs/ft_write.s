@@ -12,8 +12,21 @@
 
 section .text
 global ft_write
+extern __errno_location
 
 ft_write:
-	mov eax, 1
+	mov			eax, 1
 	syscall
+	or			rax, rax
+	jl			_error
+	ret
+
+_error:
+	push	r10
+	neg		rax
+	mov		r10, rax
+	call	__errno_location
+	mov		[rax], r10
+	mov		rax, -1
+	pop		r10
 	ret

@@ -6,7 +6,7 @@
 /*   By: thjacque <thjacque@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 00:14:48 by thjacque          #+#    #+#             */
-/*   Updated: 2020/12/28 11:20:59 by thjacque         ###   ########lyon.fr   */
+/*   Updated: 2020/12/28 12:55:01 by thjacque         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,26 @@ int		main(void)
 	ret = ft_read(fd, buffer3, 10);
 	buffer3[10] = 0;
 	close(fd);
-	fd = open("read.txt", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+
+	fd = open("write.txt", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	write(fd, "test1,2,3", 10);
 	close(fd);
-	fd = open("ft_write.txt", O_RDONLY);
+	fd = open("write.txt", O_RDONLY);
 	ret2 = ft_read(fd, buffer4, 10);
 	buffer4[10] = 0;
 	close(fd);
 	printf("ft_write: |%s| %d\n", buffer3, ret);
 	printf("write: |%s| %d\n", buffer4, ret2);
+
+	/*
+	**	DUP (const char *src)
+	*/
+	printf("\n==============\n| FT_STRDUP |\n==============\n");
+	char *dup = strdup("Coucou");
+	char *dup1 = ft_strdup("Coucou");
+	printf("ft_strdup: |%s|\n", dup1);
+	printf("strdup: |%s|\n", dup);
+	free(dup);
+	free(dup1);
 	return (0);
 }

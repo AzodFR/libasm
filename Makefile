@@ -5,6 +5,7 @@ OUTPUT = main.out
 OBJ =	srcs/ft_strlen.s \
 		srcs/ft_strcpy.s \
 		srcs/ft_strcmp.s \
+		srcs/ft_strdup.s \
 		srcs/ft_read.s \
 		srcs/ft_write.s
 OBJS = $(OBJ:.s=.o)
@@ -32,7 +33,7 @@ fclean: clean
 	$(RM) $(NAME) $(OUTPUT)
 
 main: $(NAME)
-	@gcc -Wall -Wextra -Werror $(INCFLAGS) main.c -L. -lasm -o $(OUTPUT)
+	@gcc -no-pie -Wall -Wextra -Werror $(INCFLAGS) main.c -L. -lasm -o $(OUTPUT)
 	@make clean
 	clear
 	@./$(OUTPUT)

@@ -12,8 +12,21 @@
 
 section .text
 global ft_read
+extern __errno_location
 
 ft_read:
-	mov eax, 0
+	mov			eax, 0
 	syscall
+	or			rax, rax
+	jl			_error
+	ret
+
+_error:
+	push	r10
+	neg		rax
+	mov		r10, rax
+	call	__errno_location
+	mov		[rax], r10
+	mov		rax, -1
+	pop		r10
 	ret

@@ -23,18 +23,23 @@ ft_strcpy:
 	jmp		_loop
 
 _loop:
-	cmp byte	[rsi], 0
-	jne			_cpy
-	mov byte	[rdi + r8], 0
-	mov qword	rax, rdi
-	pop			r8
-	pop			r9
-	pop			rbp
-	ret
+	cmp byte	[rdi + r8], 0
+	je			_cpy
+	jmp			_end
 
 _cpy:
-	mov byte	r9b, [rsi]
+	cmp byte	[rsi], 0
+	je			_end
+	mov			r9b, [rsi]
 	mov byte	[rdi + r8], r9b
 	inc			rsi
 	inc			r8
 	jmp			_loop
+
+_end:
+	mov byte	[rdi + r8], 0
+	mov			rax, rdi
+	pop			r8
+	pop			r9
+	pop			rbp
+	ret

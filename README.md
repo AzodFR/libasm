@@ -4,10 +4,10 @@
 
 ### Linux
 
-`nasm -f elf64 xxx.s -Iincludes_path/`
+`nasm -f elf64 src_path/xxx.s -Iincludes_path/`
 
 ### MacOS
-`nasm -f macho64 -Iincludes_path/`
+`nasm -f macho64 src_path/xxx.s -Iincludes_path/`
 
 ## Mandatory
 
